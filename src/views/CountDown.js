@@ -24,12 +24,15 @@ class NewCountDown extends React.Component {
     }
 }
 
-function CountDown(props) {
+function CountDown() {
     const [countDown, setCountDown] = useState(3);
+    const timeUp = function () {
+        alert('Hết giờ');
+    };
     useEffect(() => {
         if (countDown === 0) {
             console.log('return');
-            props.timeUp();
+            timeUp();
             return;
         }
         let timerId = setInterval(() => {

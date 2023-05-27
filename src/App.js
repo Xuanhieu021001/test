@@ -6,36 +6,9 @@ import Todo from './views/Todo';
 import Covid from './views/Covid';
 import { useEffect } from 'react';
 import { CountDown, NewCountDown } from './views/CountDown';
+import { Route, Routes } from 'react-router-dom';
 
 function App() {
-    // const [title, setTitle] = useState('');
-    // const [todos, setTodo] = useState([
-    //     { id: 1, title: 'Học lập trình', type: 'eric' },
-    //     { id: 2, title: 'Xem tivi', type: 'eric' },
-    //     { id: 3, title: 'Lướt facebook', type: 'hary' },
-    // ]);
-    // const [id, setId] = useState(4);
-    // const handleChangeInput = function (e) {
-    //     setTitle(e.target.value);
-    // };
-    // const handleClick = function (e) {
-    //     const newTodo = { id: id, title: title };
-    //     setTodo([...todos, newTodo]);
-    //     setId(id + 1);
-    //     console.log(todos);
-    // };
-    // const handleDeleteTodo = function (id) {
-    //     let currentTodo = todos;
-    //     currentTodo = currentTodo.filter((todo) => {
-    //         return todo.id !== id;
-    //     });
-    //     setTodo(currentTodo);
-    // };
-
-    const timeUp = function () {
-        // alert('Hết giờ');
-    };
-
     return (
         <div className="App">
             <Nav />
@@ -44,22 +17,13 @@ function App() {
                 <p>
                     Edit <code>src/App.js</code> and save to Hieu abc.
                 </p>
-                <NewCountDown></NewCountDown>
-                <CountDown timeUp={timeUp} />
-
-                <Covid />
-                {/* <Todo todos={todos} title={'All title'} handleDeleteTodo={handleDeleteTodo} />
-                <Todo
-                    todos={todos.filter((todo) => {
-                        return todo.type === 'eric';
-                    })}
-                    title={'Eric title'}
-                    handleDeleteTodo={handleDeleteTodo}
-                />
-
-                <input type="text" value={title} onChange={(e) => handleChangeInput(e)}></input>
-                <button onClick={(e) => handleClick(e)}>Click me</button> */}
             </header>
+            <Routes>
+                <Route path="/" element={<Covid />}></Route>
+                <Route path="/todos" element={<Todo />}></Route>
+                <Route path="/countdown" element={<CountDown />}></Route>
+                <Route path="/secret" element={<Covid />}></Route>
+            </Routes>
         </div>
     );
 }

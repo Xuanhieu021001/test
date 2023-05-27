@@ -2,12 +2,12 @@ import './Nav.scss';
 function Nav() {
     return (
         <div className="topnav">
-            <a className="active" href="#home">
-                Home
+            <a className="active" href="/">
+                Covid
             </a>
-            <a href="#news">News</a>
-            <a href="#contact">Contact</a>
-            <a href="#about">About</a>
+            <a href="/todos">Todos</a>
+            <a href="/countdown">CountDown</a>
+            <a href="/secret">Secret</a>
         </div>
     );
 }
