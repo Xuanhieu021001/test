@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Todo from './views/Todo';
 import Covid from './views/Covid';
 import { useEffect } from 'react';
+import { CountDown, NewCountDown } from './views/CountDown';
 
 function App() {
     // const [title, setTitle] = useState('');
@@ -31,6 +32,10 @@ function App() {
     //     setTodo(currentTodo);
     // };
 
+    const timeUp = function () {
+        // alert('Hết giờ');
+    };
+
     return (
         <div className="App">
             <Nav />
@@ -39,6 +44,9 @@ function App() {
                 <p>
                     Edit <code>src/App.js</code> and save to Hieu abc.
                 </p>
+                <NewCountDown></NewCountDown>
+                <CountDown timeUp={timeUp} />
+
                 <Covid />
                 {/* <Todo todos={todos} title={'All title'} handleDeleteTodo={handleDeleteTodo} />
                 <Todo

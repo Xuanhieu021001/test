@@ -1,28 +1,8 @@
 import { useEffect, useState } from 'react';
 import './Covid.scss';
-import axios from 'axios';
-import moment from 'moment';
+import useFetch from './customize/fetch';
 function Covid() {
-    const [dataCovid, setDataCovid] = useState([]);
-    const [loading, setLoading] = useState(true);
-    useEffect(() => {
-        const fetchData = async () => {
-            let res = await axios.get('https://api.covidtracking.com/v1/us/daily.json');
-            let data = res && res.data ? res.data : [];
-            if (data && data.length > 0) {
-                var newData = data.map((item) => {
-                    item.dateChecked = moment(item.dateChecked).format('DD/MM/YYYY');
-                    return item;
-                });
-            }
-            setDataCovid(newData);
-            setLoading(false);
-        };
-        setTimeout(() => {
-            fetchData();
-            console.log('kkkk');
-        }, 3000);
-    }, []);
+    const { data: dataCovid, loading, isError } = useFetch('https://api.covidtracking.com/v1/us/daily.json');
     return (
         <table>
             <thead>
@@ -34,7 +14,8 @@ function Covid() {
                 </tr>
             </thead>
             <tbody>
-                {loading === false &&
+                {isError === false &&
+                    loading === false &&
                     dataCovid &&
                     dataCovid.length > 0 &&
                     dataCovid.map((item, index) => {
@@ -51,6 +32,13 @@ function Covid() {
                     <tr>
                         <td colSpan="5" style={{ textAlign: 'center' }}>
                             Loading...
+                        </td>
+                    </tr>
+                )}
+                {isError === true && (
+                    <tr>
+                        <td colSpan="5" style={{ textAlign: 'center' }}>
+                            Something wrong...
                         </td>
                     </tr>
                 )}
