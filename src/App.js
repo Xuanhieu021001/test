@@ -7,6 +7,8 @@ import Covid from './views/Covid';
 import { useEffect } from 'react';
 import { CountDown, NewCountDown } from './views/CountDown';
 import { Route, Routes } from 'react-router-dom';
+import Blog from './views/BlogApp';
+import DetailBlog from './views/DetailBlog';
 
 function App() {
     return (
@@ -23,6 +25,8 @@ function App() {
                 <Route path="/todos" element={<Todo />}></Route>
                 <Route path="/countdown" element={<CountDown />}></Route>
                 <Route path="/secret" element={<Covid />}></Route>
+                <Route path="/blog" element={<Blog />}></Route>
+                <Route path="/blog/:id" element={<DetailBlog />}></Route>
             </Routes>
         </div>
     );
