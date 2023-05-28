@@ -2,12 +2,12 @@ import useFetch from './customize/fetch';
 import './BlogApp.scss';
 import { Link } from 'react-router-dom';
 function Blog() {
-    const { data: dataBlog, loading, isError } = useFetch('https://jsonplaceholder.typicode.com/posts');
-    console.log(dataBlog);
-    const newDataBlog = dataBlog.slice(0.9);
+    const { data: dataBlog, loading, isError } = useFetch('https://jsonplaceholder.typicode.com/posts', false);
+    const newDataBlog = dataBlog.slice(0, 9);
 
     return (
         <div className="card">
+            {loading === true && <span style={{ width: '100%', fontSize: ' 20px' }}>Loading...</span>}
             {newDataBlog.map((blog, index) => {
                 return (
                     <div className="card-body" key={index}>

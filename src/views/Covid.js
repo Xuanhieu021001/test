@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './Covid.scss';
 import useFetch from './customize/fetch';
 function Covid() {
-    const { data: dataCovid, loading, isError } = useFetch('https://api.covidtracking.com/v1/us/daily.json');
+    const { data: dataCovid, loading, isError } = useFetch('https://api.covidtracking.com/v1/us/daily.json', true);
 
     return (
         <table>
