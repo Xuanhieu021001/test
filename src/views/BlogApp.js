@@ -6,20 +6,27 @@ function Blog() {
     const newDataBlog = dataBlog.slice(0, 9);
 
     return (
-        <div className="card">
-            {loading === true && <span style={{ width: '100%', fontSize: ' 20px' }}>Loading...</span>}
-            {newDataBlog.map((blog, index) => {
-                return (
-                    <div className="card-body" key={index}>
-                        <h5 className="card-title">{blog.title}</h5>
-                        <p className="card-text">{blog.body}</p>
-                        <Link to={`/blog/${blog.id}`} className="btn btn-primary">
-                            Go somewhere
-                        </Link>
-                    </div>
-                );
-            })}
-        </div>
+        <>
+            {loading === false && (
+                <Link to={`/blog/add-new-blog`} className="btn btn-primary">
+                    Add Blog
+                </Link>
+            )}
+            <div className="card">
+                {loading === true && <span style={{ width: '100%', fontSize: ' 20px' }}>Loading...</span>}
+                {newDataBlog.map((blog, index) => {
+                    return (
+                        <div className="card-body" key={index}>
+                            <h5 className="card-title">{blog.title}</h5>
+                            <p className="card-text">{blog.body}</p>
+                            <Link to={`/blog/${blog.id}`} className="btn btn-primary">
+                                Go somewhere
+                            </Link>
+                        </div>
+                    );
+                })}
+            </div>
+        </>
     );
 }
 

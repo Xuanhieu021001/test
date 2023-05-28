@@ -9,6 +9,7 @@ import { CountDown, NewCountDown } from './views/CountDown';
 import { Route, Routes } from 'react-router-dom';
 import Blog from './views/BlogApp';
 import DetailBlog from './views/DetailBlog';
+import AddNewBlog from './views/AddNewBlog';
 
 function App() {
     return (
@@ -27,6 +28,7 @@ function App() {
                 <Route path="/secret" element={<Covid />}></Route>
                 <Route path="/blog" element={<Blog />}></Route>
                 <Route path="/blog/:id" element={<DetailBlog />}></Route>
+                <Route path="/blog/add-new-blog" element={<AddNewBlog />}></Route>
             </Routes>
         </div>
     );
